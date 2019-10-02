@@ -5,7 +5,7 @@
     <hr>
     <app-navbar></app-navbar>
     <hr>
-    <router-view></router-view>
+    <router-view class="block bordered"></router-view>
   </div>
 </template>
 
@@ -28,5 +28,18 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.block {
+  display: inline-block;
+  width: 400px;
+  padding: 10px;
+  margin: 10px;
+  height: 100%;
+}
+
+.bordered {
+  border: 1px solid lightcoral;
+  border-radius: 4px;
 }
 </style>

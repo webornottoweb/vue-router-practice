@@ -2,13 +2,13 @@
     <div>
         <ul class="nav nav-pills justify-content-center">
             <li class="nav-item">
-                <router-link class="nav-link" to="/">News</router-link>
+                <router-link class="nav-link" active-class="active" to="/" exact>News</router-link>
             </li>
             <li class="nav-item">
-                <router-link class="nav-link" to="/profile">Profile</router-link>
+                <router-link class="nav-link" active-class="active" to="/profile">Profile</router-link>
             </li>
             <li class="nav-item">
-                <router-link class="nav-link" to="/projects">Projects</router-link>
+                <router-link class="nav-link" active-class="active" to="/projects">Projects</router-link>
             </li>
         </ul>
     </div>
