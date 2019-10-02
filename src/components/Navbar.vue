@@ -1,6 +1,6 @@
 <template>
     <div>
-        <ul class="nav nav-pills">
+        <ul class="nav nav-pills justify-content-center">
             <li class="nav-item">
                 <router-link class="nav-link" to="/">News</router-link>
             </li>
