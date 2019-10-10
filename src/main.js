@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
-import VueRouter from 'vue-router';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import VueRouter from 'vue-router';
 import { routes } from './routes';
 
 Vue.config.productionTip = false
@@ -11,8 +11,8 @@ Vue.config.productionTip = false
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-  routes,
-  mode: 'history'
+  mode: 'history',
+  routes
 });
 
 new Vue({
