@@ -2,12 +2,12 @@
     <div class="card" style="width: 18rem;">
         <img class="card-img-top" :src="img" alt="Card image cap">
         <div class="card-body">
-            <h5 class="card-title">{{ name }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Price: {{ price }}</h6>
-            <p class="card-text">{{ description }}</p>
+            <h5 class="card-title">{{ stock.name }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Price: {{ stock.price }}</h6>
+            <p class="card-text">{{ stock.description }}</p>
             <div class="d-flex flex-row justify-content-between">
-                <input type="number" class="form-control flex-fill" style="width: 150px;" placeholder="Amount" />
-                <button class="btn btn-primary buy-btn">Buy</button>
+                <input type="number" class="form-control flex-fill" style="width: 150px;" placeholder="Amount" v-model.number="quantity" />
+                <button class="btn btn-primary buy-btn" @click="buyStock" :disabled="quantity <= 0 || !Number.isInteger(quantity)">Buy</button>
             </div>
         </div>
     </div>
@@ -15,14 +15,27 @@
 
 <script>
 export default {
-    props: ['name', 'price', 'description'],
+    props: ['stock'],
     data() {
         return {
-            image: null
+            image: null,
+            quantity: 0
         };
     },
     created() {
         this.img = "https://picsum.photos/200?random&t=" + (new Date().getTime());
+    },
+    methods: {
+        buyStock() {
+            const order = {
+                stockId: this.stock.id,
+                quantity: this.quantity,
+                price: this.stock.price
+            };
+
+            console.log(order);
+            this.quantity = 0;
+        }
     }
 }
 </script>
