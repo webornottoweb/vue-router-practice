@@ -9,15 +9,18 @@
             <ul class="navbar-nav mr-auto">
                 <router-link class="nav-item" to="/portfolio" tag="li"><a class="nav-link">Portfolio</a></router-link>
                 <router-link class="nav-item" to="/stocks" tag="li"><a class="nav-link">Stocks</a></router-link>
+            </ul>
+            <ul class="navbar-nav my-2 my-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link">End day</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
+                        Save & Load
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="#">Save</a>
+                        <a class="dropdown-item" href="#">Load</a>
                     </div>
                 </li>
             </ul>
