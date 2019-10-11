@@ -1,10 +1,12 @@
 <template>
     <div class="card" style="width: 18rem;">
-        <div class="card-overlay" v-if="buying">
-            <div class="spinner-border text-light" role="status">
-                <span class="sr-only">Loading...</span>
+        <transition name="fade">
+            <div class="card-overlay" v-if="buying">
+                <div class="spinner-border text-light" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
             </div>
-        </div>
+        </transition>
         <img class="card-img-top" :src="img" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">{{ stock.name }}</h5>
@@ -76,5 +78,11 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    .fade-enter-active, .fade-leave-active {
+        transition: all .3s ease;
+    }
+    .fade-enter, .fade-leave-to {
+        opacity: 0;
     }
 </style>
