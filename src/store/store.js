@@ -7,7 +7,9 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        stocks
+        stocks,
+        currency: '$',
+        ballance: 1000
     },
     getters: {},
     mutations: {},

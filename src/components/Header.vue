@@ -23,7 +23,23 @@
                         <a class="dropdown-item" href="#">Load</a>
                     </div>
                 </li>
+                <li class="navbar-text">
+                    <span class="badge badge-info">
+                        Ballance: {{ currency }}1000
+                    </span>
+                </li>
             </ul>
         </div>
     </nav>
 </template>
+<script>
+import { mapState } from 'vuex';
+
+export default {
+    computed: {
+        ...mapState([
+            'currency'
+        ])
+    }
+}
+</script>
