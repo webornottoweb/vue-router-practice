@@ -25,7 +25,7 @@
                 </li>
                 <li class="navbar-text">
                     <span class="badge badge-info">
-                        Ballance: {{ currency }}1000
+                        Ballance: {{ currency }}{{ ballance }}
                     </span>
                 </li>
             </ul>
@@ -38,7 +38,8 @@ import { mapState } from 'vuex';
 export default {
     computed: {
         ...mapState([
-            'currency'
+            'currency',
+            'ballance'
         ])
     }
 }

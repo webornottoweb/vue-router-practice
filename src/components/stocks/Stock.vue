@@ -50,7 +50,10 @@ export default {
                 price: this.stock.price
             };
 
-            let result = this.$store.dispatch('processOrder', order)
+            this.$store.dispatch('processOrder', order)
+                .catch(() => {
+                    console.log('You don\'t have enough money');
+                })
                 .finally(() => {
                     this.quantity = 0;
                     this.buying = false
