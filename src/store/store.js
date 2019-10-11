@@ -10,7 +10,7 @@ export default new Vuex.Store({
         stocks
     },
     getters: {},
-    mutators: {},
+    mutations: {},
     actions: {},
     modules: {}
 });
