@@ -46,10 +46,11 @@ export default {
                 price: this.stock.price
             };
 
-            this.quantity = 0;
-
             let result = this.$store.dispatch('processOrder', order)
-                .then(() => this.buying = false);
+                .finally(() => {
+                    this.quantity = 0;
+                    this.buying = false
+                });
         }
     }
 }
