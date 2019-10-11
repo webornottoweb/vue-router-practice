@@ -1,10 +1,13 @@
 <template>
     <div class="card" style="width: 18rem;">
         <transition name="fade">
-            <div class="card-overlay" v-if="buying">
+            <div class="card-overlay card-overlay-await" v-if="buying" key="await">
                 <div class="spinner-border text-light" role="status">
                     <span class="sr-only">Loading...</span>
                 </div>
+            </div>
+            <div class="card-overlay card-overlay-error" v-if="error" key="error">
+                <span class="error-message">{{ errorMessage }}</span>
             </div>
         </transition>
         <img class="card-img-top" :src="img" alt="Card image cap">
@@ -29,7 +32,8 @@ export default {
         return {
             image: null,
             quantity: 0,
-            buying: false
+            buying: false,
+            error: false,
         };
     },
     computed: {
@@ -52,11 +56,15 @@ export default {
 
             this.$store.dispatch('processOrder', order)
                 .catch(() => {
-                    console.log('You don\'t have enough money');
+                    this.buying = false;
+                    this.error = true;
+                    this.errorMessage = 'You don\'t have enough money';
+                    
+                    setTimeout(() => this.error = false, 1000);
                 })
                 .finally(() => {
                     this.quantity = 0;
-                    this.buying = false
+                    this.buying = false;
                 });
         }
     }
@@ -76,16 +84,24 @@ export default {
         height: 100%;
         position: absolute;
         z-index: 1;
-        background-color: lightblue;
         opacity: .9;
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    .card-overlay-await {
+        background-color: lightblue;
+    }
+    .card-overlay-error {
+        background-color: lightcoral;
     }
     .fade-enter-active, .fade-leave-active {
         transition: all .3s ease;
     }
     .fade-enter, .fade-leave-to {
         opacity: 0;
+    }
+    .error-message {
+        color: lightcyan;
     }
 </style>
