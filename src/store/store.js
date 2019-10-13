@@ -9,7 +9,8 @@ export default new Vuex.Store({
     state: {
         stocks,
         currency: '$',
-        ballance: 1000
+        ballance: 1000,
+        portfolio: []
     },
     getters: {},
     mutations: {
@@ -21,8 +22,13 @@ export default new Vuex.Store({
 
             stock.amount -= payload.amount;
         },
+        // payload: {amount:<int>}
         reduceBallance(state, payload) {
             state.ballance -= payload.amount;
+        },
+        // payload: {}
+        addPortfolio(state, payload) {
+            state.portfolio.push(payload);
         }
     },
     actions: {
