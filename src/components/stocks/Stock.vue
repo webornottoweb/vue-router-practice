@@ -60,7 +60,7 @@ export default {
                     this.error = true;
                     this.errorMessage = 'You don\'t have enough money';
                     
-                    setTimeout(() => this.error = false, 1000);
+                    setTimeout(() => this.error = false, 2000);
                 })
                 .finally(() => {
                     this.quantity = 0;
