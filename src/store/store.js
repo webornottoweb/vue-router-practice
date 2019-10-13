@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 import stocks from '../data/stocks';
+import { isToday } from '../helpers/date';
 
 Vue.use(Vuex);
 
@@ -12,7 +13,11 @@ export default new Vuex.Store({
         ballance: 1000,
         portfolio: []
     },
-    getters: {},
+    getters: {
+        todayPortfolio(state) {
+            return state.portfolio.filter(_ => isToday(_.date));
+        }
+    },
     mutations: {
         // payload: {id: <int>, amount:<int>}
         reduceStockAmount(state, payload) {
@@ -51,7 +56,13 @@ export default new Vuex.Store({
                     commit({
                         type: 'reduceBallance',
                         amount: orderPrice
-                    })
+                    });
+
+                    commit({
+                        type: 'addPortfolio',
+                        date: Math.floor(Date.now() / 1000),
+                        ...order
+                    });
 
                     resolve();
                 }, 1000);
