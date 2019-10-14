@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="row portfolio-stocks">
         <app-stock v-for="stock in portfolio" :key="stock.id" :stock="stock"></app-stock>
     </div>
 </template>
@@ -19,3 +19,9 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+    .portfolio-stocks {
+        margin-top: 20px;
+    }
+</style>
