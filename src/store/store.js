@@ -16,6 +16,10 @@ export default new Vuex.Store({
     getters: {
         todayPortfolio(state) {
             return state.portfolio.filter(_ => isToday(_.date));
+        },
+        // payload: {id: <int>}
+        stockById: (state) => (id) => {
+            return state.stocks.find(_ => _.id === id);
         }
     },
     mutations: {
