@@ -30,7 +30,7 @@ export default {
             const date = new Date(this.stock.date * 1000);
             const dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
 
-            return date.toLocaleDateString('en-US', dateOptions) + ' ' + `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+            return date.toLocaleDateString('en-US', dateOptions);
         },
         amountPaid() {
             return this.stock.quantity * this.stock.price;
