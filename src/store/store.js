@@ -15,7 +15,8 @@ export default new Vuex.Store({
     },
     getters: {
         todayPortfolio(state) {
-            return state.portfolio.filter(_ => isToday(_.date));
+            // semanthically this is a list of stocks without profit calculation
+            return state.portfolio.filter(_ => _.profit === undefined);
         },
         // payload: {id: <int>}
         stockById: (state) => (id) => {
@@ -38,6 +39,17 @@ export default new Vuex.Store({
         // payload: {}
         addPortfolio(state, payload) {
             state.portfolio.push(payload);
+        },
+        randomizeStocksCosts(state, payload) {
+            console.log(Math.random() * 100);
+            const positive = Math.random() * 100 > 50;
+            state.stocks.forEach(_ => {
+                if (positive) {
+                    _.price += Math.floor(Math.random() * 10);
+                } else {
+                    _.price -= Math.floor(Math.random() * 10);
+                }
+            });
         }
     },
     actions: {
@@ -71,6 +83,11 @@ export default new Vuex.Store({
                     resolve();
                 }, 1000);
             });
+        },
+        endDate({ state, commit }) {
+            // randomize all stocks costs
+            commit('randomizeStocksCosts');
+            // calculate profit for each today purchase
         }
     },
     modules: {}

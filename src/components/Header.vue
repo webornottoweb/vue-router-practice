@@ -12,7 +12,7 @@
             </ul>
             <ul class="navbar-nav my-2 my-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" style="cursor: pointer">End day</a>
+                    <a class="nav-link" style="cursor: pointer" @click="endDay">End day</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -41,6 +41,11 @@ export default {
             'currency',
             'ballance'
         ])
+    },
+    methods: {
+        endDay() {
+            this.$store.dispatch('endDate');
+        }
     }
 }
 </script>
